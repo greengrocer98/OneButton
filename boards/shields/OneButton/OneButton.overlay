@@ -8,15 +8,21 @@
 
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
-        columns = <1>; // Length of the "col-gpios" array
+        columns = <2>; // Length of the "col-gpios" array
         rows = <1>; // Length of the "row-gpios" array
-        map = < RC(0,0)>;
+        map = < 
+            RC(0,0) 
+            RC(0,1)
+        >;
     };
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-direct";
         wakeup-source;
 
-        input-gpios = <&pro_micro 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        input-gpios 
+            = <&pro_micro 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        ;
     };
 };
